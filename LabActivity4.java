@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
 
-public class LabActivity {
+public class LabActivity4 {
 
     public static Scanner sc = new Scanner(System.in);
 

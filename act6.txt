@@ -1,0 +1,17 @@
+Welcome to GaMeStOp!
+[-----------------------------------]
+GAMES[1/10]
+Game Name: valorant
+Game Genre: fps
+Game Price: 99.0
+[-----------------------------------]
+GAMES[2/10]
+Game Name: csgo
+Game Genre: fps
+Game Price: 67.0
+[-----------------------------------]
+GAMES[3/10]
+Game Name: asphalt
+Game Genre: racing
+Game Price: 88.0
+[-----------------------------------]
