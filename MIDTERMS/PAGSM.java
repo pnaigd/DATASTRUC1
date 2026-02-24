@@ -1,29 +1,34 @@
+package MIDTERMS;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
-public class LabActivity7 {
+public class PAGSM {
 
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        System.out.println("Welcome to EFM Enterprise Systems\nWe've got it all for you!");
+        System.out.println("Welcome to PAG Enterprise Systems\nWe've got it all for you!");
 
         while (true) {
             System.out.println();
             System.out.println("""
                     Please choose one of the following:
-                    1. EFM Grocery ShopperMart POS
-                    2. EFM Movie Rental Registration
-                    3. EFM Colleges Enrollment Registration
+                    1. PAG Grocery ShopperMart POS
+                    2. PAG Movie Rental Registration
+                    3. PAG GAMESTOP
                     4. Exit
                     """);
             System.out.print("Choice: ");
             int userinput = sc.nextInt();
+            sc.nextLine();
             switch (userinput) {
                 case 1 -> {
-                    // EFM Grocery ShopperMart POS
-                    System.out.println("Loading EFM Grocery ShopperMart POS");
+                    // PAG Grocery ShopperMart POS
+                    System.out.println("Loading PAG Grocery ShopperMart POS");
                     int iProdId;
                     String strProdName,
                             strProdDesc;
@@ -48,18 +53,10 @@ public class LabActivity7 {
                     System.out.println("Thank you for shopping with us.\n");
                 }
                 case 2 -> {
-                    // EFM Movie Rental Registration
-                    System.out.println("Loading EFM Movie Rental Registration");
-                    int rent = 0,
-                            sales = 0,
-                            comedy = 0,
-                            horror = 0,
-                            scifi = 0,
-                            drama = 0,
-                            cartoons = 0,
-                            dvdtotal = 0,
-                            vcdtotal = 0,
-                            tapetotal = 0;
+                    // PAG Movie Rental Registration
+                    System.out.println("Loading PAG Movie Rental Registration");
+                    int rent = 0, sales = 0, comedy = 0, horror = 0, scifi = 0, drama = 0,
+                            cartoons = 0, dvdtotal = 0, vcdtotal = 0, tapetotal = 0;
                     boolean run = true;
                     while (run) {
                         System.out.print("""
@@ -124,12 +121,10 @@ public class LabActivity7 {
                         sc.nextLine();
 
                         switch (choice2) {
-                            case 1:
+                            case 1 ->
                                 rent++;
-                                break;
-                            case 2:
+                            case 2 ->
                                 sales++;
-                                break;
                         }
 
                         System.out.print("Input Price: ");
@@ -169,9 +164,14 @@ public class LabActivity7 {
                     do {
                         System.out.print("Enter Game Name: ");
                         String strGameName = InputString();
-
                         System.out.print("Enter Game Genre: ");
                         String strGameGenre = InputString();
+                        System.out.print("Enter Game Year: ");
+                        String strGameYear = InputString();
+                        System.out.print("Enter Game Developer: ");
+                        String strDev = InputString();
+                        System.out.print("Enter Game Platform: ");
+                        String strPlatform = InputString();
                         counter++;
 
                         System.out.print("Do you want to register another game? Y/N : ");
@@ -186,12 +186,21 @@ public class LabActivity7 {
                             register = false;
                         }
                     } while (register);
-                    System.out.println("Number of Games regstered: [" + counter + "/10]");
+                    System.out.println("Number of Games registered: [" + counter + "/10]");
                     System.out.println("Thank you for shopping with us.\n");
+                    try (BufferedReader br = new BufferedReader(new FileReader("gameList.txt"))) {
+                        String line;
+                        while ((line = br.readLine()) != null) {
+                            System.out.println(line);
+                        }
+                        br.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
                 case 4 -> {
                     // bye
-                    System.out.println("Thank you for using EFM Enterprise Systems\nGood bye");
+                    System.out.println("Thank you for using PAG Enterprise Systems\nGood bye");
                     System.exit(0);
                 }
             }
