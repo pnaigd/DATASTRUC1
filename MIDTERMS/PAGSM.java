@@ -1,8 +1,5 @@
 package MIDTERMS;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
 
 public class PAGSM {
@@ -10,7 +7,7 @@ public class PAGSM {
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-
+        PAGGameStop GS = new PAGGameStop();
         System.out.println("Welcome to PAG Enterprise Systems\nWe've got it all for you!");
 
         while (true) {
@@ -157,46 +154,7 @@ public class PAGSM {
                     }
                 }
                 case 3 -> {
-                    System.out.println("Loading GaMeStOp");
-                    int counter = 0;
-                    System.out.println("Welcome to GaMeStOp!");
-                    boolean register = true;
-                    do {
-                        System.out.print("Enter Game Name: ");
-                        String strGameName = InputString();
-                        System.out.print("Enter Game Genre: ");
-                        String strGameGenre = InputString();
-                        System.out.print("Enter Game Year: ");
-                        String strGameYear = InputString();
-                        System.out.print("Enter Game Developer: ");
-                        String strDev = InputString();
-                        System.out.print("Enter Game Platform: ");
-                        String strPlatform = InputString();
-                        counter++;
-
-                        System.out.print("Do you want to register another game? Y/N : ");
-                        String strChoice = InputString();
-                        char cChoice = strChoice.charAt(0);
-                        System.out.println("GAMES[" + counter + "/10]");
-                        if (cChoice == 'n' || cChoice == 'N') {
-                            register = false;
-                        }
-                        if (counter == 10) {
-                            System.out.println("Maximum games reached.");
-                            register = false;
-                        }
-                    } while (register);
-                    System.out.println("Number of Games registered: [" + counter + "/10]");
-                    System.out.println("Thank you for shopping with us.\n");
-                    try (BufferedReader br = new BufferedReader(new FileReader("gameList.txt"))) {
-                        String line;
-                        while ((line = br.readLine()) != null) {
-                            System.out.println(line);
-                        }
-                        br.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    GS.run();
                 }
                 case 4 -> {
                     // bye
