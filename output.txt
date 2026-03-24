@@ -1,0 +1,165 @@
+
+MENU
+[1] ADD
+[2] SEARCH
+[3] EDIT
+[4] DELETE
+[5] SORT
+[6] LIST
+[0] EXIT
+
+Choice: 6
+-----------------------------------------------------------------------------------------------------------------------
+ID   | NAME                      | GENRE                     | YEAR   | DEV                  | PLATFORM        
+
+-----------------------------------------------------------------------------------------------------------------------
+1    | Grand Theft Auto VI       | Action-Adventure/Open Wor | 2025   | Rockstar Games       | PS5/Xbox Series 
+
+2    | Resident Evil: Requiem    | Survival Horror           | 2025   | Capcom               | Multi-platform  
+
+3    | Forza Horizon 6           | Racing/Simulation         | 2025   | Playground Games     | Xbox/PC         
+
+4    | Marvel's Wolverine        | Action/Superhero          | 2025   | Insomniac Games      | PS5             
+
+5    | 007 First Light           | Stealth/Action            | 2025   | IO Interactive       | Multi-platform  
+
+6    | Fable                     | Action Role-Playing (RPG) | 2025   | Playground Games     | Xbox/PC         
+
+7    | Phantom Blade Zero        | Action/Hack and Slash     | 2026   | S-Game               | PS5/PC          
+
+8    | Crimson Desert            | Open World Action RPG     | 2025   | Pearl Abyss          | Multi-platform  
+
+9    | Slay the Spire 2          | Roguelike/Deck-builder    | 2025   | Mega Crit            | PC              
+
+10   | Plants vs Zombies 3       | Strategy                  | 2024   | PopCap Games         | Mobile/PC       
+
+-----------------------------------------------------------------------------------------------------------------------
+
+MENU
+[1] ADD
+[2] SEARCH
+[3] EDIT
+[4] DELETE
+[5] SORT
+[6] LIST
+[0] EXIT
+
+Choice: 0Welcome to PAG Enterprise Systems
+We've got it all for you!
+Please choose one of the following:
+1. PAG Grocery ShopperMart POS
+2. PAG Movie Rental Registration
+3. PAG GAMESTOP
+4. Exit
+
+Choice: 1
+Loading PAG Grocery ShopperMart POS
+Please input the following:
+ProductID: 123
+Name: asd
+Description: ddd
+Quantity: 6.0
+Price: 67.0
+Discount: 98.0
+123 asd
+Priced at 67.0 for 6.0 pieces
+Discounted at 98.0
+Subtotal: 304.0
+Thank you for shopping with us.
+
+Please choose one of the following:
+1. PAG Grocery ShopperMart POS
+2. PAG Movie Rental Registration
+3. PAG GAMESTOP
+4. Exit
+
+Choice: 2
+Loading PAG Movie Rental Registration
+Registration
+1. DVD
+2. VCD
+3. Tape
+Choice:1
+Input Title: valorant
+1. Horror
+2. Scifi
+3. Drama
+4. Comedy
+5. Cartoons
+Category:1
+Minutes: 60
+Setting: trigger
+1. Rental
+2. Sales
+Transaction:1
+Input Price: 90
+Register another Y/N? n
+
+REPORTS
+For rent: 1
+For Sale: 0
+VCD Total: 0
+DVD Total: 1
+Tape Total: 0
+Horror movies: 1
+Scifi movies: 0
+Drama movies: 0
+Comedy movies: 0
+Cartoons movies: 0
+
+Thank you for shopping with us.
+
+Please choose one of the following:
+1. PAG Grocery ShopperMart POS
+2. PAG Movie Rental Registration
+3. PAG GAMESTOP
+4. Exit
+
+Choice: 3
+
+MENU
+[1] ADD
+[2] SEARCH
+[3] EDIT
+[4] DELETE
+[5] SORT
+[6] LIST
+[0] EXIT
+
+Choice: 6
+-----------------------------------------------------------------------------------------------------------------------
+ID   | NAME                      | GENRE                     | YEAR   | DEV                  | PLATFORM        
+
+-----------------------------------------------------------------------------------------------------------------------
+1    | Grand Theft Auto VI       | Action-Adventure/Open Wor | 2025   | Rockstar Games       | PS5/Xbox Series 
+
+2    | Resident Evil: Requiem    | Survival Horror           | 2025   | Capcom               | Multi-platform  
+
+3    | Forza Horizon 6           | Racing/Simulation         | 2025   | Playground Games     | Xbox/PC         
+
+4    | Marvel's Wolverine        | Action/Superhero          | 2025   | Insomniac Games      | PS5             
+
+5    | 007 First Light           | Stealth/Action            | 2025   | IO Interactive       | Multi-platform  
+
+6    | Fable                     | Action Role-Playing (RPG) | 2025   | Playground Games     | Xbox/PC         
+
+7    | Phantom Blade Zero        | Action/Hack and Slash     | 2026   | S-Game               | PS5/PC          
+
+8    | Crimson Desert            | Open World Action RPG     | 2025   | Pearl Abyss          | Multi-platform  
+
+9    | Slay the Spire 2          | Roguelike/Deck-builder    | 2025   | Mega Crit            | PC              
+
+10   | Plants vs Zombies 3       | Strategy                  | 2024   | PopCap Games         | Mobile/PC       
+
+-----------------------------------------------------------------------------------------------------------------------
+
+MENU
+[1] ADD
+[2] SEARCH
+[3] EDIT
+[4] DELETE
+[5] SORT
+[6] LIST
+[0] EXIT
+
+Choice: 0
