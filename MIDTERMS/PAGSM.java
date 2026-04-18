@@ -3,8 +3,11 @@ package MIDTERMS;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+<<<<<<< HEAD
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+=======
+>>>>>>> 6396d3c8d0010e5778d8f1e57cfc2adb0de359ae
 import java.util.*;
 
 public class PAGSM {
@@ -220,7 +223,11 @@ public class PAGSM {
                 case 4 -> {
                     // bye
                     System.out.println("Thank you for using PAG Enterprise Systems\nGood bye");
+<<<<<<< HEAD
                     logs("Thank you for using PAG Enterprise Systems\nGood bye\n\n");
+=======
+                    logs("Thank you for using PAG Enterprise Systems\nGood bye");
+>>>>>>> 6396d3c8d0010e5778d8f1e57cfc2adb0de359ae
                     System.exit(0);
                 }
             }
@@ -254,6 +261,18 @@ public class PAGSM {
                 + "\nDiscounted at " + dDiscount + "\nSubtotal: " + dSubTotal);
         logs(iProdId + " " + strProdName + "\nPriced at " + dPrice + " for " + dQty + " pieces"
                 + "\nDiscounted at " + dDiscount + "\nSubtotal: " + dSubTotal);
+<<<<<<< HEAD
+=======
+    }
+
+    public static void logs(String message) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("output.txt", true))) {
+            bw.write(message);
+            bw.newLine();
+        } catch (IOException e) {
+            System.out.println("Error saving: " + e.getMessage());
+        }
+>>>>>>> 6396d3c8d0010e5778d8f1e57cfc2adb0de359ae
     }
 
     public static void logs(String message) {

@@ -14,12 +14,12 @@ public class Quizist {
 
     public static void loadQuestions() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader("QUIZZER/mulitplechoice.txt"));
-            String line;
-            while ((line = br.readLine()) != null)
-                if (!line.trim().isEmpty())
-                    mcList.add(line.trim());
-            br.close();
+            try (BufferedReader br = new BufferedReader(new FileReader("QUIZZER/multiplechoice.txt"))) {
+                String line;
+                while ((line = br.readLine()) != null)
+                    if (!line.trim().isEmpty())
+                        mcList.add(line.trim());
+            }
         } catch (IOException e) {
             System.out.println("Could not load questions: " + e.getMessage());
         }
@@ -40,17 +40,17 @@ public class Quizist {
             System.out.println("[C] " + mcList.get(base + 3));
             if (answers[current] != null)
                 System.out.println("Your answer: " + answers[current]);
-            System.out.println("[1] Back, [2] Next, [3] Finish");
-            System.out.print("Answer (A/B/C):");   
+            System.out.println("[1] Next  [2] Back  [3] Finish");
+            System.out.print("Answer: ");
             String input = sc.next().toUpperCase();
 
             if (input.equals("A") || input.equals("B") || input.equals("C")) {
                 answers[current] = input;
-            } else if (input.equals("2") && current < total - 1) {
+            } else if (input.equals("1") && current < total - 1) {
                 back.push(current);
                 next.clear();
                 current++;
-            } else if (input.equals("1") && !back.isEmpty()) {
+            } else if (input.equals("2") && !back.isEmpty()) {
                 next.push(current);
                 current = back.pop();
             } else if (input.equals("3")) {
