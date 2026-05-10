@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
 
+//* KEY IMPROVEMENTS FOR NEXT DAY
+//  1. MAKE LOG IN WORK BY STORING USER DATA IN A GSON FILE
+//  2. POSSIBLY MAKE IT SO QUESTIONS ARE FORMATTED IN A MORE USER-FRIENDLY WAY
+//  3. PUT THE PROJECT IN A MAVEN PROJECT TO MAKE IT EASIER TO MANAGE DEPENDENCIES AND BUILD SAID GSON FILE 
 public class Quizist {
     public static Scanner sc = new Scanner(System.in);
     public static List<String> mcList = new ArrayList<>();
@@ -40,6 +44,7 @@ public class Quizist {
             System.out.println("[C] " + mcList.get(base + 3));
             if (answers[current] != null)
                 System.out.println("Your answer: " + answers[current]);
+            
             System.out.println("[1] Next  [2] Back  [3] Finish");
             System.out.print("Answer: ");
             String input = sc.next().toUpperCase();
@@ -63,7 +68,8 @@ public class Quizist {
         int score = 0;
         for (int i = 0; i < total; i++) {
             String correct = mcList.get(i * 5 + 4);
-            if (correct.equals(answers[i])) score++;
+            if (correct.equals(answers[i]))
+                score++;
         }
         System.out.println("Score: " + score + "/" + total);
     }
