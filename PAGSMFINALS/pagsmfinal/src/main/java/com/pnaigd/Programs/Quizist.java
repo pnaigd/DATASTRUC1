@@ -1,7 +1,19 @@
-package MIDTERMS;
+package com.pnaigd.Programs;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Stack;
+
+import com.pnaigd.Service.Logger;
+import com.pnaigd.Service.UserManager;
 
 public class Quizist {
     public static Scanner sc = new Scanner(System.in);
@@ -46,11 +58,13 @@ public class Quizist {
     public static void loadQuestions() {
         mcList.clear();
         File file = new File(FILE_PATH);
-        if (!file.exists()) return;
+        if (!file.exists())
+            return;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null)
-                if (!line.trim().isEmpty()) mcList.add(line.trim());
+                if (!line.trim().isEmpty())
+                    mcList.add(line.trim());
         } catch (IOException e) {
             System.out.println("Could not load questions: " + e.getMessage());
         }
@@ -59,7 +73,8 @@ public class Quizist {
     public static void saveQuestions() {
         new File("data").mkdirs();
         try (PrintWriter pw = new PrintWriter(new FileWriter(FILE_PATH))) {
-            for (String line : mcList) pw.println(line);
+            for (String line : mcList)
+                pw.println(line);
         } catch (IOException e) {
             System.out.println("Could not save questions: " + e.getMessage());
             Logger.quizist("Save error: " + e.getMessage());
@@ -82,7 +97,8 @@ public class Quizist {
         Logger.quizist("Game started — User:\"" + loggedInUser + "\" Questions:" + total);
 
         List<Integer> indices = new ArrayList<>();
-        for (int i = 0; i < total; i++) indices.add(i);
+        for (int i = 0; i < total; i++)
+            indices.add(i);
         Collections.shuffle(indices);
 
         String[] answers = new String[total];
@@ -107,11 +123,16 @@ public class Quizist {
                 Logger.quizist(String.format("Answer given — User:\"%s\" Q%d answered [%s]",
                         loggedInUser, current + 1, input));
             } else if (input.equals("1")) {
-                if (current < total - 1) { back.push(current); current++; }
-                else System.out.println("Already on last question.");
+                if (current < total - 1) {
+                    back.push(current);
+                    current++;
+                } else
+                    System.out.println("Already on last question.");
             } else if (input.equals("2")) {
-                if (!back.isEmpty()) current = back.pop();
-                else System.out.println("No previous question.");
+                if (!back.isEmpty())
+                    current = back.pop();
+                else
+                    System.out.println("No previous question.");
             } else if (input.equals("3")) {
                 break;
             } else {
@@ -126,8 +147,10 @@ public class Quizist {
             String correct = mcList.get(qi * 5 + 4);
             String given = answers[i] != null ? answers[i] : "-";
             boolean ok = correct.equals(given);
-            if (ok) score++;
-            System.out.println("Q" + (i + 1) + ": You answered [" + given + "] | Correct: [" + correct + "] " + (ok ? "V" : "X"));
+            if (ok)
+                score++;
+            System.out.println(
+                    "Q" + (i + 1) + ": You answered [" + given + "] | Correct: [" + correct + "] " + (ok ? "V" : "X"));
         }
         System.out.println("Score: " + score + "/" + total);
         Logger.quizist(String.format("Game finished — User:\"%s\" Score:%d/%d",
@@ -152,26 +175,41 @@ public class Quizist {
                     [8] Logout
                     [9] Back
                     CHOICE:\s""");
-            String input = sc.next(); sc.nextLine();
+            String input = sc.next();
+            sc.nextLine();
 
             switch (input) {
                 case "1" -> {
-                    if (loggedInUser != null) { System.out.println("Already logged in as " + loggedInUser); break; }
-                    System.out.print("Username: "); String u = sc.nextLine().trim();
-                    System.out.print("Password: "); String p = sc.nextLine().trim();
-                    if (UserManager.login(u, p)) loggedInUser = u;
+                    if (loggedInUser != null) {
+                        System.out.println("Already logged in as " + loggedInUser);
+                        break;
+                    }
+                    System.out.print("Username: ");
+                    String u = sc.nextLine().trim();
+                    System.out.print("Password: ");
+                    String p = sc.nextLine().trim();
+                    if (UserManager.login(u, p))
+                        loggedInUser = u;
                 }
                 case "2" -> {
-                    System.out.print("Username: "); String u = sc.nextLine().trim();
-                    System.out.print("Password: "); String p = sc.nextLine().trim();
+                    System.out.print("Username: ");
+                    String u = sc.nextLine().trim();
+                    System.out.print("Password: ");
+                    String p = sc.nextLine().trim();
                     UserManager.register(u, p);
                 }
                 case "3" -> {
-                    if (loggedInUser == null) { System.out.println("Login first."); break; }
+                    if (loggedInUser == null) {
+                        System.out.println("Login first.");
+                        break;
+                    }
                     UserManager.editPlayer(loggedInUser, sc);
                 }
                 case "4" -> {
-                    if (loggedInUser == null) { System.out.println("Login first."); break; }
+                    if (loggedInUser == null) {
+                        System.out.println("Login first.");
+                        break;
+                    }
                     System.out.print("Are you sure? (yes/no): ");
                     if (sc.nextLine().trim().equalsIgnoreCase("yes")) {
                         UserManager.deletePlayer(loggedInUser);
@@ -186,10 +224,13 @@ public class Quizist {
                         Logger.quizist("User logged out: \"" + loggedInUser + "\"");
                         System.out.println("Logged out.");
                         loggedInUser = null;
-                    } else System.out.println("Not logged in.");
+                    } else
+                        System.out.println("Not logged in.");
                 }
-                case "9" -> { return; }
-                default  -> System.out.println("Invalid choice.");
+                case "9" -> {
+                    return;
+                }
+                default -> System.out.println("Invalid choice.");
             }
         }
     }
@@ -206,7 +247,8 @@ public class Quizist {
                     [5] Search Questions
                     [6] Back
                     CHOICE:\s""");
-            String input = sc.next(); sc.nextLine();
+            String input = sc.next();
+            sc.nextLine();
 
             switch (input) {
                 case "1" -> addQuestion();
@@ -214,66 +256,110 @@ public class Quizist {
                 case "3" -> deleteQuestion();
                 case "4" -> listQuestions();
                 case "5" -> searchQuestions();
-                case "6" -> { return; }
-                default  -> System.out.println("Invalid choice.");
+                case "6" -> {
+                    return;
+                }
+                default -> System.out.println("Invalid choice.");
             }
         }
     }
 
     public static void addQuestion() {
-        System.out.print("Question: ");       String q   = sc.nextLine().trim();
-        System.out.print("Option A: ");       String a   = sc.nextLine().trim();
-        System.out.print("Option B: ");       String b   = sc.nextLine().trim();
-        System.out.print("Option C: ");       String c   = sc.nextLine().trim();
-        System.out.print("Answer (A/B/C): "); String ans = sc.nextLine().trim().toUpperCase();
+        System.out.print("Question: ");
+        String q = sc.nextLine().trim();
+        System.out.print("Option A: ");
+        String a = sc.nextLine().trim();
+        System.out.print("Option B: ");
+        String b = sc.nextLine().trim();
+        System.out.print("Option C: ");
+        String c = sc.nextLine().trim();
+        System.out.print("Answer (A/B/C): ");
+        String ans = sc.nextLine().trim().toUpperCase();
         if (!ans.equals("A") && !ans.equals("B") && !ans.equals("C")) {
             System.out.println("Invalid answer key. Question not saved.");
             Logger.quizist("Add question failed — invalid answer key: \"" + ans + "\"");
             return;
         }
-        mcList.add(q); mcList.add(a); mcList.add(b); mcList.add(c); mcList.add(ans);
+        mcList.add(q);
+        mcList.add(a);
+        mcList.add(b);
+        mcList.add(c);
+        mcList.add(ans);
         saveQuestions();
         System.out.println("Question added!");
-        Logger.quizist("Question added — \"" + q + "\" Answer:" + ans + " (Total:" + (mcList.size()/5) + ")");
+        Logger.quizist("Question added — \"" + q + "\" Answer:" + ans + " (Total:" + (mcList.size() / 5) + ")");
     }
 
     public static void editQuestion() {
         int total = mcList.size() / 5;
-        if (total == 0) { System.out.println("No questions to edit."); return; }
+        if (total == 0) {
+            System.out.println("No questions to edit.");
+            return;
+        }
         listQuestions();
         System.out.print("Enter question number to edit: ");
         int num;
-        try { num = Integer.parseInt(sc.nextLine().trim()); } catch (Exception e) { System.out.println("Invalid."); return; }
-        if (num < 1 || num > total) { System.out.println("Out of range."); return; }
+        try {
+            num = Integer.parseInt(sc.nextLine().trim());
+        } catch (Exception e) {
+            System.out.println("Invalid.");
+            return;
+        }
+        if (num < 1 || num > total) {
+            System.out.println("Out of range.");
+            return;
+        }
 
         int base = (num - 1) * 5;
         String oldQ = mcList.get(base);
         System.out.println("Editing Q" + num + " (blank = keep current):");
-        System.out.print("Question [" + mcList.get(base)     + "]: "); String q   = sc.nextLine().trim();
-        System.out.print("Option A [" + mcList.get(base + 1) + "]: "); String a   = sc.nextLine().trim();
-        System.out.print("Option B [" + mcList.get(base + 2) + "]: "); String b   = sc.nextLine().trim();
-        System.out.print("Option C [" + mcList.get(base + 3) + "]: "); String c   = sc.nextLine().trim();
-        System.out.print("Answer   [" + mcList.get(base + 4) + "]: "); String ans = sc.nextLine().trim().toUpperCase();
+        System.out.print("Question [" + mcList.get(base) + "]: ");
+        String q = sc.nextLine().trim();
+        System.out.print("Option A [" + mcList.get(base + 1) + "]: ");
+        String a = sc.nextLine().trim();
+        System.out.print("Option B [" + mcList.get(base + 2) + "]: ");
+        String b = sc.nextLine().trim();
+        System.out.print("Option C [" + mcList.get(base + 3) + "]: ");
+        String c = sc.nextLine().trim();
+        System.out.print("Answer   [" + mcList.get(base + 4) + "]: ");
+        String ans = sc.nextLine().trim().toUpperCase();
 
-        if (!q.isEmpty())                                           mcList.set(base,     q);
-        if (!a.isEmpty())                                           mcList.set(base + 1, a);
-        if (!b.isEmpty())                                           mcList.set(base + 2, b);
-        if (!c.isEmpty())                                           mcList.set(base + 3, c);
-        if (ans.equals("A") || ans.equals("B") || ans.equals("C")) mcList.set(base + 4, ans);
+        if (!q.isEmpty())
+            mcList.set(base, q);
+        if (!a.isEmpty())
+            mcList.set(base + 1, a);
+        if (!b.isEmpty())
+            mcList.set(base + 2, b);
+        if (!c.isEmpty())
+            mcList.set(base + 3, c);
+        if (ans.equals("A") || ans.equals("B") || ans.equals("C"))
+            mcList.set(base + 4, ans);
 
         saveQuestions();
         System.out.println("Question updated!");
-        Logger.quizist("Question edited — Q" + num + " OldText:\"" + oldQ + "\" → NewText:\"" + mcList.get(base) + "\"");
+        Logger.quizist(
+                "Question edited — Q" + num + " OldText:\"" + oldQ + "\" → NewText:\"" + mcList.get(base) + "\"");
     }
 
     public static void deleteQuestion() {
         int total = mcList.size() / 5;
-        if (total == 0) { System.out.println("No questions to delete."); return; }
+        if (total == 0) {
+            System.out.println("No questions to delete.");
+            return;
+        }
         listQuestions();
         System.out.print("Enter question number to delete: ");
         int num;
-        try { num = Integer.parseInt(sc.nextLine().trim()); } catch (Exception e) { System.out.println("Invalid."); return; }
-        if (num < 1 || num > total) { System.out.println("Out of range."); return; }
+        try {
+            num = Integer.parseInt(sc.nextLine().trim());
+        } catch (Exception e) {
+            System.out.println("Invalid.");
+            return;
+        }
+        if (num < 1 || num > total) {
+            System.out.println("Out of range.");
+            return;
+        }
 
         int base = (num - 1) * 5;
         String deletedQ = mcList.get(base);
@@ -283,15 +369,19 @@ public class Quizist {
             Logger.quizist("Question delete cancelled — Q" + num + ": \"" + deletedQ + "\"");
             return;
         }
-        for (int i = 0; i < 5; i++) mcList.remove(base);
+        for (int i = 0; i < 5; i++)
+            mcList.remove(base);
         saveQuestions();
         System.out.println("Question deleted.");
-        Logger.quizist("Question deleted — Q" + num + ": \"" + deletedQ + "\" (Remaining:" + (mcList.size()/5) + ")");
+        Logger.quizist("Question deleted — Q" + num + ": \"" + deletedQ + "\" (Remaining:" + (mcList.size() / 5) + ")");
     }
 
     public static void listQuestions() {
         int total = mcList.size() / 5;
-        if (total == 0) { System.out.println("No questions in bank."); return; }
+        if (total == 0) {
+            System.out.println("No questions in bank.");
+            return;
+        }
         Logger.quizist("Question list viewed (" + total + " questions)");
 
         Stack<Integer> back = new Stack<>();
@@ -308,10 +398,23 @@ public class Quizist {
             System.out.print("Choice: ");
             String input = sc.nextLine().trim().toUpperCase();
             switch (input) {
-                case "N" -> { if (current < total - 1) { back.push(current); current++; } else System.out.println("Last question."); }
-                case "B" -> { if (!back.isEmpty()) current = back.pop(); else System.out.println("Already at first question."); }
-                case "X" -> { return; }
-                default  -> System.out.println("Invalid.");
+                case "N" -> {
+                    if (current < total - 1) {
+                        back.push(current);
+                        current++;
+                    } else
+                        System.out.println("Last question.");
+                }
+                case "B" -> {
+                    if (!back.isEmpty())
+                        current = back.pop();
+                    else
+                        System.out.println("Already at first question.");
+                }
+                case "X" -> {
+                    return;
+                }
+                default -> System.out.println("Invalid.");
             }
         }
     }
@@ -322,10 +425,14 @@ public class Quizist {
         int total = mcList.size() / 5;
         List<Integer> results = new ArrayList<>();
         for (int i = 0; i < total; i++)
-            if (mcList.get(i * 5).toLowerCase().contains(query)) results.add(i);
+            if (mcList.get(i * 5).toLowerCase().contains(query))
+                results.add(i);
 
         Logger.quizist("Question search — keyword:\"" + query + "\" results:" + results.size());
-        if (results.isEmpty()) { System.out.println("No questions matched."); return; }
+        if (results.isEmpty()) {
+            System.out.println("No questions matched.");
+            return;
+        }
 
         Stack<Integer> back = new Stack<>();
         int current = 0;
@@ -342,10 +449,23 @@ public class Quizist {
             System.out.print("Choice: ");
             String input = sc.nextLine().trim().toUpperCase();
             switch (input) {
-                case "N" -> { if (current < results.size() - 1) { back.push(current); current++; } else System.out.println("No more results."); }
-                case "B" -> { if (!back.isEmpty()) current = back.pop(); else System.out.println("Already at first result."); }
-                case "X" -> { return; }
-                default  -> System.out.println("Invalid.");
+                case "N" -> {
+                    if (current < results.size() - 1) {
+                        back.push(current);
+                        current++;
+                    } else
+                        System.out.println("No more results.");
+                }
+                case "B" -> {
+                    if (!back.isEmpty())
+                        current = back.pop();
+                    else
+                        System.out.println("Already at first result.");
+                }
+                case "X" -> {
+                    return;
+                }
+                default -> System.out.println("Invalid.");
             }
         }
     }

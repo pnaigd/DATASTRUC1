@@ -1,11 +1,24 @@
-package MIDTERMS;
+package com.pnaigd.Service;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Stack;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class UserManager {
 
     private static final String FILE_PATH = "data/users.json";
+    private static final Gson gson = new Gson();
 
     public static class User {
         String username;
@@ -19,81 +32,47 @@ public class UserManager {
         }
     }
 
-    // ── Simple hand-rolled JSON helpers ───────────────────────────────────────
-
-    private static String jsonEscape(String s) {
-        return s.replace("\\", "\\\\").replace("\"", "\\\"");
-    }
-
-    private static String parseString(String line, String key) {
-        String token = "\"" + key + "\":";
-        int idx = line.indexOf(token);
-        if (idx < 0) return "";
-        int start = line.indexOf('"', idx + token.length()) + 1;
-        int end   = line.indexOf('"', start);
-        return (start > 0 && end > start) ? line.substring(start, end) : "";
-    }
-
-    private static int parseInt(String line, String key) {
-        String token = "\"" + key + "\":";
-        int idx = line.indexOf(token);
-        if (idx < 0) return 0;
-        String rest = line.substring(idx + token.length()).trim()
-                          .replaceAll(",.*", "").replaceAll("}", "").trim();
-        try { return Integer.parseInt(rest); } catch (NumberFormatException e) { return 0; }
-    }
-
-    // ── Persistence ───────────────────────────────────────────────────────────
-
+    // loads all users from the json file
     public static List<User> loadUsers() {
-        List<User> users = new ArrayList<>();
         File file = new File(FILE_PATH);
-        if (!file.exists()) return users;
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String username = "", password = "";
-            int highScore = 0;
-            String line;
-            while ((line = br.readLine()) != null) {
-                String t = line.trim();
-                if (t.contains("\"username\""))  username  = parseString(t, "username");
-                if (t.contains("\"password\""))  password  = parseString(t, "password");
-                if (t.contains("\"highScore\"")) highScore = parseInt(t,    "highScore");
-                if (t.startsWith("}") && !username.isEmpty()) {
-                    users.add(new User(username, password, highScore));
-                    username = ""; password = ""; highScore = 0;
-                }
+
+        // if the file doesnt exist yet just return empty list
+        if (!file.exists()) {
+            return new ArrayList<>();
+        }
+
+        try (Reader reader = new FileReader(file)) {
+            Type listType = new TypeToken<List<User>>() {
+            }.getType();
+            List<User> users = gson.fromJson(reader, listType);
+
+            // gson can return null if the file is empty
+            if (users == null) {
+                return new ArrayList<>();
             }
+
+            return users;
         } catch (IOException e) {
             System.out.println("Could not load users: " + e.getMessage());
+            return new ArrayList<>();
         }
-        return users;
     }
 
+    // saves all users to the json file
     public static void saveUsers(List<User> users) {
-        new File("data").mkdirs();
-        try (PrintWriter pw = new PrintWriter(new FileWriter(FILE_PATH))) {
-            pw.println("[");
-            for (int i = 0; i < users.size(); i++) {
-                User u = users.get(i);
-                pw.println("  {");
-                pw.println("    \"username\": \"" + jsonEscape(u.username) + "\",");
-                pw.println("    \"password\": \"" + jsonEscape(u.password) + "\",");
-                pw.println("    \"highScore\": " + u.highScore);
-                pw.print("  }");
-                pw.println(i < users.size() - 1 ? "," : "");
-            }
-            pw.println("]");
+        try (Writer writer = new FileWriter(FILE_PATH)) {
+            gson.toJson(users, writer);
         } catch (IOException e) {
             System.out.println("Could not save users: " + e.getMessage());
             Logger.usermgr("Save error: " + e.getMessage());
         }
     }
 
-    // ── Core operations ───────────────────────────────────────────────────────
-
+    // looks for a user by username, returns null if not found
     public static User findUser(List<User> users, String username) {
         for (User u : users)
-            if (u.username.equalsIgnoreCase(username)) return u;
+            if (u.username.equalsIgnoreCase(username))
+                return u;
         return null;
     }
 
@@ -132,7 +111,10 @@ public class UserManager {
     public static void editPlayer(String loggedInUser, Scanner sc) {
         List<User> users = loadUsers();
         User user = findUser(users, loggedInUser);
-        if (user == null) { System.out.println("User not found."); return; }
+        if (user == null) {
+            System.out.println("User not found.");
+            return;
+        }
 
         String oldName = user.username;
         System.out.print("New username (blank = keep '" + user.username + "'): ");
@@ -141,8 +123,14 @@ public class UserManager {
         String newPass = sc.nextLine().trim();
 
         boolean changed = false;
-        if (!newName.isEmpty()) { user.username = newName; changed = true; }
-        if (!newPass.isEmpty()) { user.password = newPass; changed = true; }
+        if (!newName.isEmpty()) {
+            user.username = newName;
+            changed = true;
+        }
+        if (!newPass.isEmpty()) {
+            user.password = newPass;
+            changed = true;
+        }
 
         if (changed) {
             saveUsers(users);
@@ -171,7 +159,10 @@ public class UserManager {
 
     public static void listPlayers(Scanner sc) {
         List<User> users = loadUsers();
-        if (users.isEmpty()) { System.out.println("No players found."); return; }
+        if (users.isEmpty()) {
+            System.out.println("No players found.");
+            return;
+        }
         Logger.usermgr("Player list viewed (" + users.size() + " players)");
 
         Stack<Integer> back = new Stack<>();
@@ -185,10 +176,23 @@ public class UserManager {
             System.out.print("Choice: ");
             String input = sc.nextLine().trim().toUpperCase();
             switch (input) {
-                case "N" -> { if (current < users.size() - 1) { back.push(current); current++; } else System.out.println("No more players."); }
-                case "B" -> { if (!back.isEmpty()) current = back.pop(); else System.out.println("Already at the first player."); }
-                case "X" -> { return; }
-                default  -> System.out.println("Invalid.");
+                case "N" -> {
+                    if (current < users.size() - 1) {
+                        back.push(current);
+                        current++;
+                    } else
+                        System.out.println("No more players.");
+                }
+                case "B" -> {
+                    if (!back.isEmpty())
+                        current = back.pop();
+                    else
+                        System.out.println("Already at the first player.");
+                }
+                case "X" -> {
+                    return;
+                }
+                default -> System.out.println("Invalid.");
             }
         }
     }
@@ -199,10 +203,14 @@ public class UserManager {
         String query = sc.nextLine().trim().toLowerCase();
         List<User> results = new ArrayList<>();
         for (User u : users)
-            if (u.username.toLowerCase().contains(query)) results.add(u);
+            if (u.username.toLowerCase().contains(query))
+                results.add(u);
 
         Logger.usermgr("Player search — keyword:\"" + query + "\" results:" + results.size());
-        if (results.isEmpty()) { System.out.println("No players matched."); return; }
+        if (results.isEmpty()) {
+            System.out.println("No players matched.");
+            return;
+        }
 
         Stack<Integer> back = new Stack<>();
         int current = 0;
@@ -215,17 +223,33 @@ public class UserManager {
             System.out.print("Choice: ");
             String input = sc.nextLine().trim().toUpperCase();
             switch (input) {
-                case "N" -> { if (current < results.size() - 1) { back.push(current); current++; } else System.out.println("No more results."); }
-                case "B" -> { if (!back.isEmpty()) current = back.pop(); else System.out.println("Already at first result."); }
-                case "X" -> { return; }
-                default  -> System.out.println("Invalid.");
+                case "N" -> {
+                    if (current < results.size() - 1) {
+                        back.push(current);
+                        current++;
+                    } else
+                        System.out.println("No more results.");
+                }
+                case "B" -> {
+                    if (!back.isEmpty())
+                        current = back.pop();
+                    else
+                        System.out.println("Already at first result.");
+                }
+                case "X" -> {
+                    return;
+                }
+                default -> System.out.println("Invalid.");
             }
         }
     }
 
     public static void leaderboard() {
         List<User> users = loadUsers();
-        if (users.isEmpty()) { System.out.println("No players yet."); return; }
+        if (users.isEmpty()) {
+            System.out.println("No players yet.");
+            return;
+        }
         users.sort((a, b) -> b.highScore - a.highScore);
         System.out.println("\n======= LEADERBOARD =======");
         for (int i = 0; i < users.size(); i++)

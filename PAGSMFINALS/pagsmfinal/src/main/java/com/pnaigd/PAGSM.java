@@ -1,8 +1,12 @@
-package MIDTERMS;
+package com.pnaigd;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+
+import com.pnaigd.Programs.PAGGameStop;
+import com.pnaigd.Programs.Quizist;
+import com.pnaigd.Service.Logger;
 
 public class PAGSM {
 
@@ -63,12 +67,13 @@ public class PAGSM {
                     boolean run = true;
                     while (run) {
                         System.out.print("""
-                                         Registration
-                                         1. DVD
-                                         2. VCD
-                                         3. Tape
-                                         Choice: """);
-                        int choice = sc.nextInt(); sc.nextLine();
+                                Registration
+                                1. DVD
+                                2. VCD
+                                3. Tape
+                                Choice: """);
+                        int choice = sc.nextInt();
+                        sc.nextLine();
                         switch (choice) {
                             case 1 -> dvdtotal++;
                             case 2 -> vcdtotal++;
@@ -79,41 +84,66 @@ public class PAGSM {
                         String title = sc.nextLine();
 
                         System.out.print("""
-                                         1. Horror
-                                         2. Scifi
-                                         3. Drama
-                                         4. Comedy
-                                         5. Cartoons
-                                         Category: """);
-                        int choice1 = sc.nextInt(); sc.nextLine();
+                                1. Horror
+                                2. Scifi
+                                3. Drama
+                                4. Comedy
+                                5. Cartoons
+                                Category: """);
+                        int choice1 = sc.nextInt();
+                        sc.nextLine();
                         String category = switch (choice1) {
-                            case 1 -> { horror++;   yield "Horror"; }
-                            case 2 -> { scifi++;    yield "Scifi"; }
-                            case 3 -> { drama++;    yield "Drama"; }
-                            case 4 -> { comedy++;   yield "Comedy"; }
-                            case 5 -> { cartoons++; yield "Cartoons"; }
+                            case 1 -> {
+                                horror++;
+                                yield "Horror";
+                            }
+                            case 2 -> {
+                                scifi++;
+                                yield "Scifi";
+                            }
+                            case 3 -> {
+                                drama++;
+                                yield "Drama";
+                            }
+                            case 4 -> {
+                                comedy++;
+                                yield "Comedy";
+                            }
+                            case 5 -> {
+                                cartoons++;
+                                yield "Cartoons";
+                            }
                             default -> "Unknown";
                         };
 
                         System.out.print("Minutes: ");
-                        int min = sc.nextInt(); sc.nextLine();
+                        int min = sc.nextInt();
+                        sc.nextLine();
 
                         System.out.print("Setting: ");
                         String setting = sc.nextLine();
 
                         System.out.print("""
-                                         1. Rental
-                                         2. Sales
-                                         Transaction: """);
-                        int choice2 = sc.nextInt(); sc.nextLine();
+                                1. Rental
+                                2. Sales
+                                Transaction: """);
+                        int choice2 = sc.nextInt();
+                        sc.nextLine();
                         String transType = switch (choice2) {
-                            case 1 -> { rent++;  yield "Rental"; }
-                            case 2 -> { sales++; yield "Sales"; }
+                            case 1 -> {
+                                rent++;
+                                yield "Rental";
+                            }
+                            case 2 -> {
+                                sales++;
+                                yield "Sales";
+                            }
                             default -> "Unknown";
                         };
 
                         System.out.print("Input Price: ");
-                        int price = sc.nextInt(); sc.nextLine();
+                        int price = sc.nextInt();
+                        sc.nextLine();
 
                         Logger.pagsm(String.format(
                                 "Movie registered — Title:\"%s\" Category:%s Format:%s Transaction:%s Minutes:%d Setting:\"%s\" Price:%d",
@@ -127,17 +157,17 @@ public class PAGSM {
                         if (ans != 'Y' && ans != 'y') {
                             System.out.println("\nREPORTS");
                             System.out.printf("""
-                                              For rent: %d
-                                              For Sale: %d
-                                              VCD Total: %d
-                                              DVD Total: %d
-                                              Tape Total: %d
-                                              Horror movies: %d
-                                              Scifi movies: %d
-                                              Drama movies: %d
-                                              Comedy movies: %d
-                                              Cartoons movies: %d
-                                              """,
+                                    For rent: %d
+                                    For Sale: %d
+                                    VCD Total: %d
+                                    DVD Total: %d
+                                    Tape Total: %d
+                                    Horror movies: %d
+                                    Scifi movies: %d
+                                    Drama movies: %d
+                                    Comedy movies: %d
+                                    Cartoons movies: %d
+                                    """,
                                     rent, sales, vcdtotal, dvdtotal, tapetotal,
                                     horror, scifi, drama, comedy, cartoons);
                             Logger.pagsm(String.format(
@@ -173,7 +203,9 @@ public class PAGSM {
         }
     }
 
-    public static String InputString() { return sc.nextLine(); }
+    public static String InputString() {
+        return sc.nextLine();
+    }
 
     public static int InputInt() {
         int temp = sc.nextInt();
@@ -181,7 +213,9 @@ public class PAGSM {
         return temp;
     }
 
-    public static double InputDouble() { return sc.nextDouble(); }
+    public static double InputDouble() {
+        return sc.nextDouble();
+    }
 
     public static double computeSalary(double dQty, double dPrice, double dDiscount) {
         return (dPrice * dQty) - dDiscount;
@@ -197,7 +231,7 @@ public class PAGSM {
     public static void date() {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("MMMM dd, yyyy hh:mm:ss a")
-                                                 .withLocale(Locale.forLanguageTag("en-PH"));
+                .withLocale(Locale.forLanguageTag("en-PH"));
         System.out.println("Current Date and Time : " + now.format(fmt));
     }
 }

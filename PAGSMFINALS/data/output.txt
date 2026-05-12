@@ -1,0 +1,86 @@
+[2026-05-12 21:30:12] [PAGSM] System started.
+[2026-05-12 21:30:18] [PAGSM] Opened: PAG Grocery ShopperMart POS
+[2026-05-12 21:30:44] [PAGSM] POS transaction — ID:1 Name:"NESTEA" Qty:12.00 Price:35.00 Discount:15.00 Subtotal:405.00
+[2026-05-12 21:30:44] [PAGSM] POS session ended.
+[2026-05-12 21:30:55] [PAGSM] Opened: PAG Movie Rental Registration
+[2026-05-12 21:31:11] [PAGSM] Movie registered — Title:"VALO" Category:Horror Format:DVD Transaction:Sales Minutes:60 Setting:"WAR" Price:250
+[2026-05-12 21:31:13] [PAGSM] Movie Rental session report — Rent:0 Sale:1 DVD:1 VCD:0 Tape:0 Horror:1 Scifi:0 Drama:0 Comedy:0 Cartoons:0
+[2026-05-12 21:31:13] [PAGSM] Movie Rental session ended.
+[2026-05-12 21:31:17] [PAGSM] Opened: PAG GameStop
+[2026-05-12 21:31:17] [GAMESTOP] GameStop opened.
+[2026-05-12 21:31:40] [GAMESTOP] Game added at position 1 — Name:"VALORANT" Genre:FPS Year:2005 Dev:"RIOT" Platform:PC
+[2026-05-12 21:31:51] [GAMESTOP] GameStop closed by user.
+[2026-05-12 21:31:51] [PAGSM] Returned from PAG GameStop.
+[2026-05-12 21:31:56] [PAGSM] Opened: PAG Quizist
+[2026-05-12 21:31:56] [QUIZIST] Quizist opened. Questions loaded: 0
+[2026-05-12 21:32:56] [USERMGR] Login failed — user not found: "Prian"
+[2026-05-12 21:34:54] [PAGSM] System started.
+[2026-05-12 21:34:55] [PAGSM] Opened: PAG Quizist
+[2026-05-12 21:34:55] [QUIZIST] Quizist opened. Questions loaded: 0
+[2026-05-12 21:35:02] [USERMGR] Login failed — user not found: "pRIAN"
+[2026-05-12 21:35:11] [USERMGR] Login failed — user not found: "Prian"
+[2026-05-12 21:35:43] [PAGSM] System started.
+[2026-05-12 21:35:45] [PAGSM] Opened: PAG Quizist
+[2026-05-12 21:35:45] [QUIZIST] Quizist opened. Questions loaded: 0
+[2026-05-12 21:35:51] [USERMGR] Login successful: "Prian" (High Score: 10)
+[2026-05-12 21:35:57] [QUIZIST] User logged out: "Prian"
+[2026-05-12 21:36:01] [QUIZIST] Quizist closed. Returned to main menu.
+[2026-05-12 21:36:01] [PAGSM] Returned from PAG Quizist.
+[2026-05-12 21:36:03] [PAGSM] System exited by user.
+[2026-05-12 21:36:32] [PAGSM] System started.
+[2026-05-12 21:36:34] [PAGSM] Opened: PAG Quizist
+[2026-05-12 21:36:34] [QUIZIST] Quizist opened. Questions loaded: 0
+[2026-05-12 21:36:36] [QUIZIST] Play attempt blocked — no user logged in.
+[2026-05-12 21:36:44] [USERMGR] Login successful: "Prian" (High Score: 10)
+[2026-05-12 21:36:50] [QUIZIST] Play attempt blocked — no questions in bank.
+[2026-05-12 21:36:54] [QUIZIST] Quizist closed. Returned to main menu.
+[2026-05-12 21:36:54] [PAGSM] Returned from PAG Quizist.
+[2026-05-12 21:37:32] [PAGSM] System started.
+[2026-05-12 21:37:34] [PAGSM] Opened: PAG Quizist
+[2026-05-12 21:37:34] [QUIZIST] Quizist opened. Questions loaded: 30
+[2026-05-12 21:37:43] [USERMGR] Login successful: "Prian" (High Score: 10)
+[2026-05-12 21:37:48] [QUIZIST] Game started — User:"Prian" Questions:30
+[2026-05-12 21:38:08] [QUIZIST] Answer given — User:"Prian" Q30 answered [A]
+[2026-05-12 21:38:18] [QUIZIST] Answer given — User:"Prian" Q29 answered [B]
+[2026-05-12 21:38:20] [QUIZIST] Game finished — User:"Prian" Score:2/30
+[2026-05-12 21:38:20] [USERMGR] Score not a high score — User:"Prian" Score:2 (Best:10)
+[2026-05-12 21:38:27] [QUIZIST] Quizist closed. Returned to main menu.
+[2026-05-12 21:38:27] [PAGSM] Returned from PAG Quizist.
+[2026-05-12 21:38:29] [PAGSM] System exited by user.
+[2026-05-12 21:50:47] [PAGSM] System started.
+[2026-05-12 21:50:50] [PAGSM] Opened: PAG Quizist
+[2026-05-12 21:50:50] [QUIZIST] Quizist opened. Questions loaded: 30
+[2026-05-12 21:50:56] [USERMGR] Login successful: "Prian" (High Score: 10)
+[2026-05-12 21:50:59] [QUIZIST] User logged out: "Prian"
+[2026-05-12 21:51:01] [QUIZIST] Quizist closed. Returned to main menu.
+[2026-05-12 21:51:01] [PAGSM] Returned from PAG Quizist.
+[2026-05-12 21:51:03] [PAGSM] System exited by user.
+[2026-05-12 23:32:38] [PAGSM] System started.
+[2026-05-12 23:32:41] [PAGSM] Opened: PAG Grocery ShopperMart POS
+[2026-05-12 23:32:59] [PAGSM] POS transaction — ID:123 Name:"nestea" Qty:12.00 Price:45.00 Discount:15.00 Subtotal:525.00
+[2026-05-12 23:32:59] [PAGSM] POS session ended.
+[2026-05-12 23:33:00] [PAGSM] Opened: PAG Movie Rental Registration
+[2026-05-12 23:33:12] [PAGSM] Movie registered — Title:"valo" Category:Horror Format:DVD Transaction:Rental Minutes:60 Setting:"war" Price:150
+[2026-05-12 23:33:13] [PAGSM] Movie Rental session report — Rent:1 Sale:0 DVD:1 VCD:0 Tape:0 Horror:1 Scifi:0 Drama:0 Comedy:0 Cartoons:0
+[2026-05-12 23:33:13] [PAGSM] Movie Rental session ended.
+[2026-05-12 23:33:16] [PAGSM] Opened: PAG GameStop
+[2026-05-12 23:33:16] [GAMESTOP] GameStop opened.
+[2026-05-12 23:33:20] [GAMESTOP] List sorted by: Name A-Z
+[2026-05-12 23:34:57] [PAGSM] System started.
+[2026-05-12 23:34:59] [PAGSM] Opened: PAG GameStop
+[2026-05-12 23:34:59] [GAMESTOP] GameStop opened.
+[2026-05-12 23:36:02] [GAMESTOP] GameStop closed by user.
+[2026-05-12 23:36:02] [PAGSM] Returned from PAG GameStop.
+[2026-05-12 23:36:04] [PAGSM] Opened: PAG GameStop
+[2026-05-12 23:36:04] [GAMESTOP] GameStop opened.
+[2026-05-12 23:36:09] [GAMESTOP] List sorted by: Name A-Z
+[2026-05-12 23:37:07] [PAGSM] System started.
+[2026-05-12 23:37:09] [PAGSM] Opened: PAG GameStop
+[2026-05-12 23:37:09] [GAMESTOP] GameStop opened.
+[2026-05-12 23:44:52] [PAGSM] System started.
+[2026-05-12 23:44:54] [PAGSM] Opened: PAG GameStop
+[2026-05-12 23:44:54] [GAMESTOP] GameStop opened.
+[2026-05-12 23:44:58] [GAMESTOP] Search performed — keyword:"valorant"
+[2026-05-12 23:45:04] [GAMESTOP] GameStop closed by user.
+[2026-05-12 23:45:04] [PAGSM] Returned from PAG GameStop.
+[2026-05-12 23:45:06] [PAGSM] System exited by user.
