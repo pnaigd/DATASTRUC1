@@ -84,3 +84,49 @@
 [2026-05-12 23:45:04] [GAMESTOP] GameStop closed by user.
 [2026-05-12 23:45:04] [PAGSM] Returned from PAG GameStop.
 [2026-05-12 23:45:06] [PAGSM] System exited by user.
+[2026-05-18 03:04:01] [PAGSM] System started.
+[2026-05-18 03:04:03] [PAGSM] Opened: PAG Grocery ShopperMart POS
+[2026-05-18 03:04:09] [PAGSM] System started.
+[2026-05-18 03:04:11] [PAGSM] Opened: PAG Grocery ShopperMart POS
+[2026-05-18 03:04:19] [PAGSM] POS transaction — ID:123 Name:"fa" Qty:12.00 Price:12.00 Discount:12.00 Subtotal:132.00
+[2026-05-18 03:04:19] [PAGSM] POS session ended.
+[2026-05-18 03:04:21] [PAGSM] Opened: PAG Movie Rental Registration
+[2026-05-18 03:04:30] [PAGSM] Movie registered — Title:"awdw" Category:Horror Format:DVD Transaction:Rental Minutes:12 Setting:"asd" Price:123
+[2026-05-18 03:04:32] [PAGSM] Movie Rental session report — Rent:1 Sale:0 DVD:1 VCD:0 Tape:0 Horror:1 Scifi:0 Drama:0 Comedy:0 Cartoons:0
+[2026-05-18 03:04:32] [PAGSM] Movie Rental session ended.
+[2026-05-18 03:04:33] [PAGSM] Opened: PAG GameStop
+[2026-05-18 03:04:33] [GAMESTOP] GameStop opened.
+[2026-05-18 03:04:44] [GAMESTOP] Game added at position 1 — Name:"asd" Genre:asd Year:asd Dev:"asd" Platform:asd
+[2026-05-18 03:04:47] [GAMESTOP] Search performed — keyword:"asd"
+[2026-05-18 03:05:00] [GAMESTOP] Game edited — ID:1 OldName:"asd" → Name:"ddd" Genre:"ddd" Year:"ddd" Dev:"ddd" Platform:"ddd"
+[2026-05-18 03:05:03] [GAMESTOP] Game deleted — ID:1 Name:"ddd"
+[2026-05-18 03:05:09] [GAMESTOP] List sorted by: Name A-Z
+[2026-05-18 03:05:10] [GAMESTOP] List sorted by: Name Z-A
+[2026-05-18 03:05:13] [GAMESTOP] List sorted by: Year Ascending
+[2026-05-18 03:05:18] [GAMESTOP] List sorted by: Year Descending
+[2026-05-18 03:07:32] [PAGSM] System started.
+[2026-05-18 03:07:34] [PAGSM] Opened: PAG GameStop
+[2026-05-18 03:07:34] [GAMESTOP] GameStop opened.
+[2026-05-18 03:07:36] [GAMESTOP] List sorted by: Name A-Z
+[2026-05-18 03:10:35] [PAGSM] System started.
+[2026-05-18 03:10:36] [PAGSM] Opened: PAG GameStop
+[2026-05-18 03:10:36] [GAMESTOP] GameStop opened.
+[2026-05-18 03:10:39] [GAMESTOP] List sorted by: Name A-Z
+[2026-05-18 03:10:51] [GAMESTOP] List sorted by: Name Z-A
+[2026-05-18 03:11:01] [GAMESTOP] Game added at position 0 — Name:"12" Genre:12 Year:12 Dev:"12" Platform:12
+[2026-05-18 03:11:01] [GAMESTOP] Invalid menu choice: 12
+[2026-05-18 03:11:02] [GAMESTOP] Invalid menu choice: 12
+[2026-05-18 03:11:04] [GAMESTOP] GameStop closed by user.
+[2026-05-18 03:11:04] [PAGSM] Returned from PAG GameStop.
+[2026-05-18 03:11:06] [PAGSM] System exited by user.
+[2026-05-18 03:13:10] [PAGSM] System started.
+[2026-05-18 03:13:11] [PAGSM] Opened: PAG GameStop
+[2026-05-18 03:13:11] [GAMESTOP] GameStop opened.
+[2026-05-18 03:13:13] [GAMESTOP] Game deleted — ID:1 Name:"12"
+[2026-05-18 03:13:16] [GAMESTOP] List sorted by: Name A-Z
+[2026-05-18 03:13:21] [GAMESTOP] List sorted by: Name Z-A
+[2026-05-18 03:13:26] [GAMESTOP] List sorted by: Year Ascending
+[2026-05-18 03:13:33] [GAMESTOP] List sorted by: Year Descending
+[2026-05-18 03:13:35] [GAMESTOP] GameStop closed by user.
+[2026-05-18 03:13:35] [PAGSM] Returned from PAG GameStop.
+[2026-05-18 03:13:36] [PAGSM] System exited by user.
